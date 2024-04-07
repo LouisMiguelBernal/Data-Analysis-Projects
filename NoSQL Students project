@@ -1,0 +1,55 @@
+CREATE TABLE students(
+    student_NUM varchar(10) PRIMARY KEY,
+    first_name varchar(30),
+    last_name varchar(28),
+    age int,
+    address varchar(58)
+);
+
+INSERT INTO students VALUES ('101', "Michael", "Johnson", 21, "California");
+INSERT INTO students VALUES ('102', "Emily", "Miller", 20, "Texas");
+INSERT INTO students VALUES ('103', "David", "Williams", 20, "Florida");
+INSERT INTO students VALUES ('104', "Robert", "Brown", 19, "New York");
+INSERT INTO students VALUES ('105', "William", "Jones", 20, "Washington");
+INSERT INTO students VALUES ('106', "Charles", "Garcia", 19, "Arizona");
+INSERT INTO students VALUES ('107', "James", "Rodriguez", 25, "Illinois");
+INSERT INTO students VALUES ('108', "Alexander", "Wilson", 21, "California");
+INSERT INTO students VALUES ('109', "Daniel", "Thomas", 41, "Nevada");
+INSERT INTO students VALUES ('110', "Matthew", "Davis", 28, "Oregon");
+
+CREATE TABLE subject(
+    subj_Code int,
+    subj_name varchar(20),
+    subj_descript varchar(30),
+    PRIMARY KEY (subj_code)
+);
+
+INSERT INTO subject VALUES (1, "PHP", "Web development");
+INSERT INTO subject VALUES (2, "REACT JS", "Advance website structure");
+INSERT INTO subject VALUES (3, "Javascript", "Logic and programming");
+INSERT INTO subject VALUES (4, "CSS", "Website designing");
+INSERT INTO subject VALUES (5, "HTML", "Website foundation");
+
+CREATE TABLE course (
+    course_Code varchar(10) PRIMARY KEY,
+    course_name varchar(30),
+    student_NUM varchar(10) REFERENCES students (student_NUM)
+);
+
+INSERT INTO course VALUES ("CS01", "Computer Programming", "101");
+INSERT INTO course VALUES ("IT82", "Computer Coding ", "102");
+INSERT INTO course VALUES ("IS03", "Debugging ","103");
+
+select * from students;
+select * from subject;
+select * from course;
+
+SELECT 
+    students.student_NUM, 
+    students.last_name, 
+    course.course_code
+FROM students
+
+INNER JOIN course ON students.student_NUM = course.student_NUM;
+
+    
